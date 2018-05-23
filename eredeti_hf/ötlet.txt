@@ -1,0 +1,19 @@
+Szóval akkor ez szerintem egy jó alapötlet lenne:
+-A telónk 40kHz-es hangjelet ad ki. Ezt 2 szobában a vevők érzékelik, és letárgyalják a vevők, hogy kinél a legerősebb a jel. Ez alapján kapnak egy "tokent", hogy épp náluk jár az ember.
+-'A' szobában be tudjuk kapcsolni a hangszórót, ha bemegyünk.
+-'B' szobában ha utoljára nála járt az ember, és halkabb a jel X szintnél, akkor leellenőrzi az ajtót, és szükség esetén értesíti a telefont, hogy pittyegjen a tulajnak.
+-Az ajtót egy kapcsolóval felszerelt kis buta eszköz fogja reprezentálni. Le lehet tőle kérdezni a kapcsoló állapotát. A zenegép is egy hasonló egyszerű eszköz lesz, csak hangszóróval, meg egy ki-be funkció gombbal.
+-Tehát az ultrahang (40kHz) a lokalizációhoz kell, és Bluetooth LE-n kommunikálnak.
+
+Amit még érdemes átgondolni:
+-Mivel egy 40kHz-et fog mindkét vevő, így ez zártabb szobákra működik csak biztosra ez a *hol erősebb a hang* típusú vizsgálat. Akár lehetne mellé ultrahangos mozgásérzékelő, vagy valahogy szobaakusztikát vizsgálni, hogy biztosan az X vevő szobájából jön-e a hang.
+-Ha biztonságosabbra akarnánk csinálni, akkor kell valami authentikáció. Ez annyit jelent, hogy a telónak generálunk egy publikus + privát kulcsot, és beregisztráljuk a nyilvános kulcsot a hálózatban. És mindig amikor szobát vált, akkor BT-n küld a telónak a vevő egy random stringet, a teló a privát kulccsal titkosítja, a vevő meg ellenőrzi, hogy a nyilvános kulccsal dekódolva visszakapja-e az eredeti üzenetet.
+-Futhatna egy webes felület (localhoston), és lenne egy "token" a wifi-joghoz, ami vagy fix vevőnél lesz, vagy tudják egymás közt adogatni a jogot. És akkor itt lehetne pár egyszerű konfigurációt csinálni, esetleg valami statisztikát (mikor mennyit volt házon kívül, stb.).
+-Ha nagyon prón akarjuk megcsinálni, akkor olyat is lehet, hogy az egyes vevőknek nem fix feladataik vannak (pl. 'A' vevő: zene, 'B' vevő:ajtó), hanem ezeket is webes felületről lehetne bekattintgatni.
+
+Extra infó:
+-Utánanéztem az RFID tag-es megoldásoknak (NFC, stb.), és sajna nincs olcsó, 1 méter feletti hatótávú passzív RFID-s cucc. Meg telóval csak NFC-t lehetne használni.
+-Lehetne még úgy is, hogy az embernél lévő eszköz csinál mindent. Ilyenkor minden szobában lenne egy jeladó, ami más frekin ad ki hangot, vagy máshogy pittyeg. De ezzel több gond is lenne, főleg ha telóval szeretnénk működtetni.
+Ultrahangos adó-vevő Arduinohoz:
+https://www.hestore.hu/prod_10035534.html
+Arduino meg van egy a szobánkban, de majd még úgyis kell kérni a házihoz plusz eszközt.

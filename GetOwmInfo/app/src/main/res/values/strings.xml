@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GetOwmInfo</string>
+    <string name="temperature">Temperature</string>
+    <string name="humidity">Humidity</string>
+    <string name="no_response">No response</string>
+    <string name="ble_uuid">3631c728-5c7b-11e8-9c2d-fa7ae01bbebc</string>
+</resources>
