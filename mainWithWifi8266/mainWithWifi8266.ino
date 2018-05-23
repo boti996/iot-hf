@@ -6,6 +6,7 @@
 
 #define CE D2 
 #define CS D8
+//Pins
 //IRQ = D1
 //MOSI = D7 = GPIO 13
 //MISO = D6 = GPIO 12
@@ -13,6 +14,7 @@
 //CE = D2 = GPIO 4
 //CS = D8 = GPIO 15
 //VCC = 3,3V!
+//GND = G
 
 //Bluetooth LE params
 RF24 radio(CE, CS);
@@ -65,6 +67,7 @@ void setup() {
   Serial.println(WiFi.localIP());
   pinMode(BUILTIN_LED, OUTPUT);
 
+  //LED light
   // Connect D0 to RST to wake up
   pinMode(D0, WAKEUP_PULLUP);
   digitalWrite(BUILTIN_LED, LOW);
